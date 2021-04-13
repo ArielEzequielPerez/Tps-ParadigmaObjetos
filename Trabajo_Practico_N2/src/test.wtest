@@ -1,0 +1,161 @@
+import trabajoPracticoN2.*
+
+describe "test"{
+
+//PrimerParte
+	test "conocer la habilidad de joaquin" {
+
+        assert.equals(25, joaquin.habilidad())
+     }
+    test "conocer la habilidad de joaquin solista"{
+        joaquin.cantaEnGrupo(false)
+        assert.equals(20, joaquin.habilidad())
+    }
+    test "conocer la habilidad de Lucia" {
+
+		lucia.cantaEnGrupo(true)
+        assert.equals(50, lucia.habilidad())
+     }
+    test "conocer la habilidad de Lucia solista"{
+        assert.equals(70, lucia.habilidad())
+    }
+    
+    test "luis Alberto toca con la Fender"{
+        assert.equals(80, luisAlberto.habilidad())
+    }
+    
+    test "Luis Alberto toca ahora con la Gibson sana, queremos saber su habilidad"{
+        luisAlberto.guitarra(gibson)
+        assert.equals(100, luisAlberto.habilidad())
+        }
+    test "alguien trata mal a la Gibson y ahora no está sana, queremos saber su habilidad de luis alberto"{
+        luisAlberto.guitarra(gibson)
+        gibson.estaDaniada()
+        assert.equals(40, luisAlberto.habilidad())
+        }
+    test "Joaquín no interpreta bien la canción “La Familia”"{
+        assert.notThat(joaquin.interpretaBien(laFamilia))
+    }
+    
+    test "Joaquín interpreta bien la canción “Cisne”"{
+        assert.that(joaquin.interpretaBien(cisne))
+    }
+    
+    test "Lucia interpreta bien la canción “La Familia”"{
+        assert.that(lucia.interpretaBien(laFamilia))
+    }
+    
+    test"lucia interpreta bien la cancion cisne"{
+        assert.notThat(lucia.interpretaBien(cisne))
+    }
+    
+    test "luis alberto interpreta bien la cancion cisne"{
+        assert.that(luisAlberto.interpretaBien(cisne))
+        }
+
+    test "luis alberto interpreta bien la cancion la familia"{
+            assert.that(luisAlberto.interpretaBien(laFamilia))
+        }
+        
+    test "Cuanto cobra joaquin por la presentacion en el luna park"{
+
+            assert.equals(50,joaquin.cobra(lunaPark))
+        }
+    test "modificar presentacion de joaquin en la trastienda"{
+        joaquin.cantaEnGrupo(false)
+        assert.equals(100, joaquin.cobra(trastienda))
+        }
+    test "saber la capacidad de la trastienda para el 08/08/2020"{
+        assert.equals(700, trastienda.capacidad(new Date(day = 8, month = 8, year = 2020)))
+    }
+    test "saber la capacidad de la trastienda para el 05/08/2020"{
+        assert.equals(400, trastienda.capacidad(new Date(day = 5, month = 8, year = 2020)))
+    }
+
+    test "saber cuanto cobra lucia por la presentacion en el luna park"{
+    	assert.equals(500, lucia.cobra(presentacionLunaPark))
+    }
+    test "saber cuanto cobra lucia la presentacion en la trastienda"{
+    	assert.equals(400, lucia.cobra(presentacionTrastienda))
+    }
+    test "saber cuanto cobra luis alberto la presentacion en luna park"{
+    	assert.equals(1200, luisAlberto.cobra(presentacionLunaPark))
+    }
+    test "cuanto cobra Luis Alberto por la presentacion de La Trastienda"{
+    	assert.equals(1000, luisAlberto.cobra(presentacionTrastienda))
+    }
+    test "costo de la presentación del Luna Park"{
+        assert.equals(1750, presentacionLunaPark.costo())
+    }
+    test "costo de la presentación de la Trastienda el 15/11/2020"{ 
+        assert.equals(1450, presentacionTrastienda.costo())
+    }
+
+
+ 
+//Segunda Parte
+	test "la cancion crisantemo es corta"{
+		assert.that(crisantemo.esUnaCancionCorta())
+	}
+	
+	test "la cancion alma de diamante es corta"{
+		assert.notThat(almaDeDiamante.esUnaCancionCorta())
+	}
+	
+	test "la cantante soledad es minimalista"{
+		assert.that(soledad.esMinimalista())
+	}
+	
+	test "el cantante luis alberto es minimalista"{
+		assert.notThat(luisAlberto.esMinimalista())
+	}
+	
+	test "el cantante joaquin es minimalista"{
+		assert.notThat(joaquin.esMinimalista())
+	}
+	
+	test "saber que canciones de luis alberto tienen la palabra 'cielo'"{
+		assert.equals([almaDeDiamante, crisantemo],luisAlberto.contienePalabra("Cielo"))
+		}
+
+	
+	test "saber que canciones de luis alberto tienen la palabra 'pujante' "{
+		assert.equals([], luisAlberto.contienePalabra("pujante"))
+		}
+		
+	test "Saber cuantos segundos dura la obra de Kike"{
+		assert.equals(0, kike.duracionDeObra())
+	}
+	
+	test "saber cuantos segundo dura la obra de soledad"{
+		assert.equals(299, soledad.duracionDeObra())
+	}
+	
+	test "saber cuantos segundos dura la obra de luis alberto"{
+		assert.equals(703,luisAlberto.duracionDeObra())
+	}
+	
+	test "saber qué canción es más larga del álbum 'Para los árboles'"{
+		assert.equals(almaDeDiamante, paraLosArboles.cancionMasLarga())
+	}
+	
+	test "saber cual es la cancion mas larga del album 'la sole'"{
+		assert.equals(eres, laSole.cancionMasLarga())
+	}
+	
+	test "cancion mas larga del album 'especial la familia'"{
+		assert.equals(laFamilia, especialLaFamilia.cancionMasLarga())
+	}
+	
+	test "queremos saber si luis alberto la pego"{
+		assert.that(luisAlberto.laPego())
+	}
+	
+	test "queremos saber si soledad la pego"{
+		assert.notThat(soledad.laPego())
+	}
+	
+	test "queremos saber si joaquin la pego"{
+		assert.that(joaquin.laPego())
+	}
+}
